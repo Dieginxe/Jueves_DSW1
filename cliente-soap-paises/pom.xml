@@ -5,32 +5,23 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.1</version><!--<version>2.7.1</version>-->
+		<version>2.7.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>edu.idat.dsw1</groupId>
-	<artifactId>cliente-soap-paises</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>consuming-web-service-initial</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cliente-soap-paises</name>
+	<name>consuming-web-service-initial</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web-services</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -40,49 +31,11 @@
 		</dependency>
 	</dependencies>
 
-	<profiles>
-	<profile>
-		<id>java11</id>
-		<activation>
-			<jdk>[11,)</jdk>
-		</activation>
-
-		<dependencies>
-			<dependency>
-				<groupId>org.glassfish.jaxb</groupId>
-				<artifactId>jaxb-runtime</artifactId>
-			</dependency>
-		</dependencies>
-	</profile>
-</profiles>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-					<groupId>org.jvnet.jaxb2.maven2</groupId>
-					<artifactId>maven-jaxb2-plugin</artifactId>
-					<version>0.14.0</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>generate</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<schemaLanguage>WSDL</schemaLanguage>
-						<generatePackage>com.example.consumingwebservice.wsdl</generatePackage>
-						<schemas>
-							<schema>
-								<url>http://localhost:8080/ws/countries.wsdl</url>
-							</schema>
-						</schemas>
-					</configuration>
 			</plugin>
 		</plugins>
 	</build>
