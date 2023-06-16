@@ -5,39 +5,35 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.1</version>
+		<version>3.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>consuming-web-service-initial</artifactId>
+	<groupId>pe.edu.idat</groupId>
+	<artifactId>dsw1-soap-J19</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>consuming-web-service-initial</name>
-	<description>Demo project for Spring Boot</description>
-
+	<name>dsw1-soap-J19</name>
+	<description>Aprendo a crear un servicio web SOAP</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-oxm</artifactId>
-			<version>4.3.30.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-core</artifactId>
-			<version>3.0.10.RELEASE</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -47,7 +43,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sources>
+						<source>${project.basedir}/src/main/resources/countries.xsd</source>
+					</sources>
+				</configuration>
+			</plugin>
 		</plugins>
+
+
 	</build>
 
 </project>
